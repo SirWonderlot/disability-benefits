@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disability Benefits Programs</title>
+    <style>
+        /* Scoped reset — overrides Webflow global styles inside our widget */
+        .dbp-widget {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif !important;
+            max-width: 900px !important;
+            margin: 0 auto !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+        }
+
+        .dbp-widget *,
+        .dbp-widget *::before,
+        .dbp-widget *::after {
+            box-sizing: border-box !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif !important;
+        }
+
+        .dbp-widget h1,
+        .dbp-widget h2,
+        .dbp-widget h3,
+        .dbp-widget h4 {
+            font-weight: 600 !important;
+            text-align: left !important;
+            margin-top: 0 !important;
+        }
+
+        .dbp-widget h1,
+        .dbp-widget h2 {
+            color: #0264b4 !important;
+        }
+
+        .dbp-widget h3,
+        .dbp-widget h4 {
+            color: #059ce2 !important;
+        }
+
+        .dbp-widget p,
+        .dbp-widget ul,
+        .dbp-widget label {
+            text-align: left !important;
+        }
+
+        .dbp-widget p,
+        .dbp-widget li {
+            line-height: 1.5 !important;
+            color: inherit !important;
+        }
+
+        .dbp-widget strong {
+            font-weight: 600 !important;
+        }
+
+        .dbp-widget a {
+            color: #0264b4 !important;
+        }
+
+        .dbp-widget section {
+            margin-bottom: 40px !important;
+        }
+
+        .dbp-widget hr.section-divider {
+            border: none !important;
+            border-top: 1px solid #ccc !important;
+            margin: 60px 0 !important;
+        }
+
+        .dbp-widget .indented-title {
+            padding-left: 15px !important;
+        }
+
+        .dbp-widget .benefit-item {
+            border: 1px solid #ccc !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            margin-bottom: 12px !important;
+        }
+
+        .dbp-widget .benefit-trigger {
+            cursor: pointer !important;
+            padding: 12px 15px !important;
+            background: #e8e8e8 !important;
+            user-select: none !important;
+        }
+
+        .dbp-widget .benefit-trigger:hover {
+            background: #dedede !important;
+        }
+
+        .dbp-widget .benefit-number {
+            font-weight: 400 !important;
+        }
+
+        .dbp-widget .benefit-title {
+            font-weight: 600 !important;
+        }
+
+        .dbp-widget .benefit-content {
+            display: none !important;
+            padding: 15px !important;
+            background: #f7f7f7 !important;
+        }
+
+        .dbp-widget .benefit-content.open {
+            display: block !important;
+        }
+
+        .dbp-widget .benefit-content h4 {
+            margin-top: 32px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .dbp-widget .benefit-content h4:first-child {
+            margin-top: 0 !important;
+        }
+
+        .dbp-widget .benefit-content p,
+        .dbp-widget .benefit-content ul {
+            margin-top: 4px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .dbp-widget .more-info-row {
+            margin-top: 28px !important;
+            padding-top: 16px !important;
+            border-top: 1px solid #ccc !important;
+        }
+
+        .dbp-widget .more-info-row label {
+            color: #0264b4 !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+        }
+
+        .dbp-widget .more-info-row input[type="checkbox"] {
+            accent-color: #0264b4 !important;
+            margin-right: 6px !important;
+        }
+
+        .dbp-widget .next-steps-section {
+            display: none !important;
+        }
+
+        .dbp-widget .next-steps-section.visible {
+            display: block !important;
+        }
+
+        .dbp-widget .next-step-item {
+            display: none !important;
+            background: rgba(238, 243, 249, 0.45) !important;
+            border: 1px solid #ccc !important;
+            border-radius: 10px !important;
+            padding: 15px !important;
+            margin-bottom: 16px !important;
+        }
+
+        .dbp-widget .next-step-item.visible {
+            display: block !important;
+        }
+
+        .dbp-widget .next-step-item h3 {
+            margin-top: 0 !important;
+            margin-bottom: 6px !important;
+        }
+
+        .dbp-widget .next-step-item h4 {
+            margin-top: 32px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .dbp-widget .next-step-item p,
+        .dbp-widget .next-step-item ul {
+            margin-top: 4px !important;
+            margin-bottom: 8px !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dbp-widget">
+
+    <h1>Disability Benefits Programs</h1>
+
+    <section>
+        <p>[Placeholder: Explanation of how to use this tool will go here.]</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section>
+        <h2>Summary of Benefits Programs</h2>
+        <ul>
+            <li>Canada Disability Benefit (CDB)</li>
+        </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <section>
+        <h2 class="indented-title">Benefits</h2>
+
+        <div class="benefit-item">
+            <div class="benefit-trigger" onclick="toggleBenefit('cdb-content')">
+                <span class="benefit-number">1.1</span>&nbsp;<span class="benefit-title">Canada Disability Benefit (CDB)</span>
+            </div>
+            <div class="benefit-content" id="cdb-content">
+
+                <h4>Description of Benefit</h4>
+                <p>The Canada Disability Benefit is a new federal income-tested benefit that provides annual financial support to eligible working-age individuals with severe and prolonged disabilities. The benefit provides monthly payments based on your income tax information from the previous year. Once approved, you do not need to reapply annually—Service Canada will review your eligibility each year automatically.</p>
+
+                <h4>Benefit Amount</h4>
+                <ul>
+                    <li><strong>Maximum Payment:</strong> $200 per month or $2,400 per year</li>
+                    <li><strong>Payment Schedule:</strong> Payments are issued on the third Thursday of each month</li>
+                </ul>
+
+                <h4>Eligibility Requirements</h4>
+                <p>To qualify for the Canada Disability Benefit, you must meet all of the following criteria:</p>
+                <ul>
+                    <li>Be approved for the Disability Tax Credit (DTC)</li>
+                    <li>Be aged 18–64 years</li>
+                    <li>Have filed a 2024 federal tax return (you and your spouse/common-law partner, if applicable)</li>
+                    <li>Be a Canadian resident for tax purposes</li>
+                    <li>Have one of these statuses: Canadian citizen, permanent resident, registered under the Indian Act, or temporary resident in Canada for 18+ months</li>
+                    <li>Not be incarcerated in federal prison for 2+ years</li>
+                </ul>
+
+                <h4>Retroactive Payments</h4>
+                <p>The Canada Disability Benefit can provide retroactive payments for up to 24 months from when your application is received and approved, but payments cannot extend to any period before June 2025.</p>
+
+                <div class="more-info-row">
+                    <label>
+                        <input type="checkbox" id="checkbox-cdb" onchange="toggleNextStep('next-step-cdb', this.checked)">
+                        Provide more information
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps: appears after all Benefits, only when a checkbox is checked -->
+    <section class="next-steps-section" id="next-steps-section">
+        <hr class="section-divider" style="margin-top: 0;">
+        <h2 class="indented-title">Next Steps</h2>
+
+        <div class="next-step-item" id="next-step-cdb">
+            <h3>Canada Disability Benefit (CDB)</h3>
+
+            <p><strong>Description:</strong> Up to $200/month in support payments.</p>
+
+            <h4>Application Methods</h4>
+            <p>You can apply online through the Service Canada portal, by mail, or in person:</p>
+            <ul>
+                <li><strong>Online (Recommended):</strong> Apply through the Service Canada online portal</li>
+                <li><strong>By Mail or In Person:</strong> Complete a printable application form and mail it to Service Canada Centre, CDB Processing Centre, P.O. Box 60, Boucherville, QC J4B 5E6, or drop it off at your nearest Service Canada office</li>
+            </ul>
+
+            <h4>Letter From Service Canada</h4>
+            <ul>
+                <li><strong>If You Have Received a Letter:</strong> The government is sending letters in June 2025 to people already approved for the Disability Tax Credit who meet most eligibility criteria. The letter includes a unique application code.</li>
+                <li><strong>If You Didn't Receive a Letter:</strong> You can still apply—just complete the full application form without the code.</li>
+            </ul>
+
+            <h4>Processing Time</h4>
+            <p>It may take up to 28 calendar days for Service Canada to process your application, or up to 49 days if you are applying on behalf of someone else as their legal representative.</p>
+
+            <h4>Apply Online</h4>
+            <p>To apply online, click: <a href="https://www.canada.ca/en/services/benefits/disability/canada-disability-benefit/apply.html" target="_blank">Canada Disability Benefit | Apply Online</a></p>
+
+            <h4>Further Assistance</h4>
+            <p>Service Canada CDB Call Center:</p>
+            <ul>
+                <li><strong>Phone:</strong> 1-833-486-3007</li>
+                <li><strong>TTY:</strong> 1-833-467-2700</li>
+            </ul>
+        </div>
+    </section>
+
+</div><!-- end .dbp-widget -->
+
+<script>
+    function toggleBenefit(contentId) {
+        const content = document.getElementById(contentId);
+        content.classList.toggle('open');
+    }
+
+    function toggleNextStep(stepId, isChecked) {
+        const step = document.getElementById(stepId);
+        if (isChecked) {
+            step.classList.add('visible');
+        } else {
+            step.classList.remove('visible');
+        }
+        updateNextStepsSection();
+    }
+
+    function updateNextStepsSection() {
+        const anyChecked = document.querySelector('.next-step-item.visible') !== null;
+        const section = document.getElementById('next-steps-section');
+        if (anyChecked) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    }
+</script>
+
+</body>
+</html>
