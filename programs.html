@@ -74,6 +74,7 @@
             padding-left: 15px !important;
         }
 
+        /* ── Benefits accordion ── */
         .dbp-widget .benefit-item {
             border: 1px solid #ccc !important;
             border-radius: 10px !important;
@@ -92,12 +93,27 @@
             background: #dedede !important;
         }
 
+        .dbp-widget .benefit-arrow {
+            display: inline-block !important;
+            margin-right: 8px !important;
+            font-size: 0.75em !important;
+            transition: transform 0.2s ease !important;
+            transform: rotate(0deg) !important;
+        }
+
+        .dbp-widget .benefit-trigger.open .benefit-arrow,
+        .dbp-widget .next-step-trigger.open .benefit-arrow {
+            transform: rotate(90deg) !important;
+        }
+
         .dbp-widget .benefit-number {
             font-weight: 400 !important;
+            color: #000 !important;
         }
 
         .dbp-widget .benefit-title {
             font-weight: 600 !important;
+            color: #000 !important;
         }
 
         .dbp-widget .benefit-content {
@@ -115,7 +131,7 @@
             margin-bottom: 6px !important;
         }
 
-        .dbp-widget .benefit-content h4:first-child {
+        .dbp-widget .benefit-content > :first-child {
             margin-top: 0 !important;
         }
 
@@ -125,6 +141,7 @@
             margin-bottom: 8px !important;
         }
 
+        /* "Provide more information" checkbox row */
         .dbp-widget .more-info-row {
             margin-top: 28px !important;
             padding-top: 16px !important;
@@ -142,6 +159,7 @@
             margin-right: 6px !important;
         }
 
+        /* ── Next Steps section ── */
         .dbp-widget .next-steps-section {
             display: none !important;
         }
@@ -150,31 +168,53 @@
             display: block !important;
         }
 
+        /* Outer wrapper — hidden until checkbox checked */
         .dbp-widget .next-step-item {
             display: none !important;
-            background: rgba(238, 243, 249, 0.45) !important;
             border: 1px solid #ccc !important;
             border-radius: 10px !important;
-            padding: 15px !important;
-            margin-bottom: 16px !important;
+            overflow: hidden !important;
+            margin-bottom: 12px !important;
         }
 
         .dbp-widget .next-step-item.visible {
             display: block !important;
         }
 
-        .dbp-widget .next-step-item h3 {
-            margin-top: 0 !important;
-            margin-bottom: 6px !important;
+        /* Trigger bar — slightly darker blue-grey */
+        .dbp-widget .next-step-trigger {
+            cursor: pointer !important;
+            padding: 12px 15px !important;
+            background: #c8ddf0 !important;
+            user-select: none !important;
         }
 
-        .dbp-widget .next-step-item h4 {
+        .dbp-widget .next-step-trigger:hover {
+            background: #b8d0e8 !important;
+        }
+
+        /* Content area — same light blue-grey as before */
+        .dbp-widget .next-step-content {
+            display: none !important;
+            padding: 15px !important;
+            background: rgba(238, 243, 249, 0.6) !important;
+        }
+
+        .dbp-widget .next-step-content.open {
+            display: block !important;
+        }
+
+        .dbp-widget .next-step-content h4 {
             margin-top: 32px !important;
             margin-bottom: 6px !important;
         }
 
-        .dbp-widget .next-step-item p,
-        .dbp-widget .next-step-item ul {
+        .dbp-widget .next-step-content h4:first-child {
+            margin-top: 0 !important;
+        }
+
+        .dbp-widget .next-step-content p,
+        .dbp-widget .next-step-content ul {
             margin-top: 4px !important;
             margin-bottom: 8px !important;
         }
@@ -196,6 +236,9 @@
         <h2>Summary of Benefits Programs</h2>
         <ul>
             <li>Canada Disability Benefit (CDB)</li>
+            <li>Disability Tax Credit (DTC)</li>
+            <li>Guaranteed Access Program (GAP)</li>
+            <li>Canadian Dental Care Plan (CDCP)</li>
         </ul>
     </section>
 
@@ -204,13 +247,13 @@
     <section>
         <h2 class="indented-title">Benefits</h2>
 
+        <!-- 1.1 Canada Disability Benefit -->
         <div class="benefit-item">
-            <div class="benefit-trigger" onclick="toggleBenefit('cdb-content')">
-                <span class="benefit-number">1.1</span>&nbsp;<span class="benefit-title">Canada Disability Benefit (CDB)</span>
+            <div class="benefit-trigger" onclick="toggleBenefit('cdb-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">1.1</span>&nbsp;<span class="benefit-title">Canada Disability Benefit (CDB)</span>
             </div>
             <div class="benefit-content" id="cdb-content">
 
-                <h4>Description of Benefit</h4>
                 <p>The Canada Disability Benefit is a new federal income-tested benefit that provides annual financial support to eligible working-age individuals with severe and prolonged disabilities. The benefit provides monthly payments based on your income tax information from the previous year. Once approved, you do not need to reapply annually—Service Canada will review your eligibility each year automatically.</p>
 
                 <h4>Benefit Amount</h4>
@@ -242,6 +285,199 @@
 
             </div>
         </div>
+
+        <!-- 1.2 Disability Tax Credit -->
+        <div class="benefit-item">
+            <div class="benefit-trigger" onclick="toggleBenefit('dtc-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">1.2</span>&nbsp;<span class="benefit-title">Disability Tax Credit (DTC)</span>
+            </div>
+            <div class="benefit-content" id="dtc-content">
+
+                <p>The Disability Tax Credit is a non-refundable tax credit that helps people with disabilities, or their supporting family member, reduce the amount of income tax they may have to pay. If your application is approved, you may claim the disability amount on your tax return. The DTC is non-refundable, meaning it can help you pay less taxes, but you will not get any money back.</p>
+
+                <h4>Benefit Amount</h4>
+                <ul>
+                    <li><strong>Base Amount:</strong> $10,138 for 2025</li>
+                    <li><strong>Supplement for Children:</strong> An additional $5,914 for individuals under 18 years of age</li>
+                    <li><strong>Provincial Credit:</strong> An additional provincial tax credit is also available (varies by province, typically 5–10% of the disability amount)</li>
+                    <li><strong>Retroactive Claims:</strong> The credits can be claimed retroactively, going back up to 10 years</li>
+                </ul>
+
+                <h4>Eligibility Requirements</h4>
+                <p>You may be eligible for the DTC if a medical practitioner certifies that you have a severe and prolonged impairment in one of the categories, significant limitations in two or more categories, or receive therapy to support a vital function. Your impairment must meet the following criteria:</p>
+                <ul>
+                    <li>You are unable to do the activity, or it takes 3 times longer than someone of similar age without the impairment, even with the use of appropriate therapy, medication, and devices</li>
+                    <li>This restriction is present all or almost all of the time (generally at least 90%)</li>
+                    <li>The restriction has lasted or is expected to last for a continuous period of at least 12 months</li>
+                </ul>
+
+                <h4>Income Requirements</h4>
+                <p>All income levels should apply for the DTC. The DTC is available to individuals with any level of income, including patients receiving disability assistance, patients who work full time, and those with no income.</p>
+                <p><strong>Why apply even with no income:</strong> Being approved for the DTC can help you get access to other federal, provincial, or territorial programs. The DTC is a prerequisite for several important benefits and programs, making it essential to apply regardless of your income level.</p>
+
+                <h4>When to Apply</h4>
+                <p>Apply any time using the digital application form or paper form. Apply for the DTC if you think you may be eligible, even if you have no income to report. If the CRA approves your application, the DTC may help you access other federal programs.</p>
+
+                <h4>Programs the DTC Provides Access To</h4>
+                <p>Being approved for the DTC unlocks eligibility for many other federal, provincial, and territorial benefits:</p>
+                <ul>
+                    <li><strong>Canada Disability Benefit (CDB)</strong> — Monthly payment of up to $200 for low-income individuals with disabilities</li>
+                    <li><strong>Registered Disability Savings Plan (RDSP)</strong> — Long-term savings plan with government grants and bonds</li>
+                    <li><strong>Child Disability Benefit</strong> — Monthly tax-free payment up to $284.25 per child for families caring for a child under 18 who is eligible for the DTC</li>
+                    <li><strong>Canada Workers Benefit (CWB) Disability Supplement</strong> — Additional amount up to $843 for persons with disabilities approved for the DTC</li>
+                    <li><strong>Home Accessibility Tax Credit</strong> — Non-refundable tax credit for eligible home renovations</li>
+                    <li><strong>Canada Caregiver Credit</strong> — Non-refundable tax credit for individuals supporting a family member with a disability</li>
+                    <li><strong>Canadian Dental Care Plan</strong> — Access to dental coverage</li>
+                    <li><strong>Medical Expense Tax Deduction</strong> — Enhanced ability to claim medical expenses</li>
+                    <li><strong>Home Buyers' Amount</strong> — Tax credit available without being a first-time home buyer if DTC-eligible</li>
+                </ul>
+
+                <div class="more-info-row">
+                    <label>
+                        <input type="checkbox" id="checkbox-dtc" onchange="toggleNextStep('next-step-dtc', this.checked)">
+                        Provide more information
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 1.3 Guaranteed Access Program -->
+        <div class="benefit-item">
+            <div class="benefit-trigger" onclick="toggleBenefit('gap-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">1.3</span>&nbsp;<span class="benefit-title">Guaranteed Access Program (GAP)</span>
+            </div>
+            <div class="benefit-content" id="gap-content">
+
+                <p>The Guaranteed Access Program (GAP) is a Final Expense life insurance product designed to provide a one-time, tax-free payout (minimum $10,000) to a person's loved ones at the time of their passing. This program is offered through Canadian insurers and guarantees coverage for people with disabilities who might otherwise have difficulty obtaining traditional life insurance, helping to ensure funeral and final expenses don't become a financial burden on their families during an already difficult time.</p>
+
+                <h4>Key Features</h4>
+                <ul>
+                    <li><strong>Guaranteed Approval:</strong> No medical underwriting required; approval is guaranteed for applicants under age 80 who meet eligibility criteria</li>
+                    <li><strong>Designed Affordability:</strong> Financially accessible to all income levels, with costs typically ranging from only $1.00 to $1.50 per day</li>
+                    <li><strong>Guaranteed Benefit Amount:</strong> The payout to your beneficiary is guaranteed to never decrease</li>
+                    <li><strong>Level Premiums:</strong> Monthly costs are guaranteed to never increase</li>
+                    <li><strong>Maturity Benefit:</strong> If you outlive the policy term, the benefit amount is paid directly to you to use as you wish</li>
+                    <li><strong>Guaranteed Payout:</strong> Funds are guaranteed to be paid out—either to your beneficiary upon death or directly to you if you outlive the term</li>
+                </ul>
+
+                <h4>Benefit Amounts</h4>
+                <ul>
+                    <li><strong>Minimum Coverage:</strong> Minimum $10,000 lump sum payment to the person of your choosing (amounts are typically higher)</li>
+                    <li><strong>Coverage Determination:</strong> Requires a person to complete an online questionnaire</li>
+                    <li><strong>Payment Type:</strong> One-time, tax-free lump sum payment to your designated beneficiary upon death</li>
+                </ul>
+
+                <h4>Medical Exclusions</h4>
+                <p>There are no medical exclusions.</p>
+
+                <div class="more-info-row">
+                    <label>
+                        <input type="checkbox" id="checkbox-gap" onchange="toggleNextStep('next-step-gap', this.checked)">
+                        Provide more information
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 1.4 Canadian Dental Care Plan -->
+        <div class="benefit-item">
+            <div class="benefit-trigger" onclick="toggleBenefit('cdcp-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">1.4</span>&nbsp;<span class="benefit-title">Canadian Dental Care Plan (CDCP)</span>
+            </div>
+            <div class="benefit-content" id="cdcp-content">
+
+                <p>The Canadian Dental Care Plan is helping make the cost of dental care more affordable for eligible Canadian residents. The CDCP is managed by Health Canada and administered by Sun Life. This federal program provides coverage for dental services for Canadians who do not have access to private dental insurance.</p>
+                <p><strong>Important:</strong> The CDCP does not provide free dental care. It covers a part of the cost of your care. You may have to pay the portion of costs that are not covered.</p>
+
+                <h4>Coverage Amount</h4>
+                <p>Income-Based Co-Payments:</p>
+                <ul>
+                    <li><strong>Income under $70,000:</strong> 100% coverage (no co-payment)</li>
+                    <li><strong>Income $70,000–$79,999:</strong> 60% coverage (40% co-payment)</li>
+                    <li><strong>Income $80,000–$89,999:</strong> 40% coverage (60% co-payment)</li>
+                </ul>
+                <p><strong>Note:</strong> Additional costs may apply if your dental services exceed CDCP reimbursement rates or include non-covered services.</p>
+
+                <h4>Services Covered</h4>
+                <p>The CDCP will help pay a portion of the cost for a wide range of oral health care services:</p>
+                <ul>
+                    <li><strong>Preventive:</strong> Exams, cleanings, polishing, fluoride treatments, X-rays</li>
+                    <li><strong>Basic:</strong> Fillings, simple extractions</li>
+                    <li><strong>Major:</strong> Root canals, crowns, oral surgeries</li>
+                    <li><strong>Periodontal:</strong> Deep cleanings, scaling and root planing</li>
+                    <li><strong>Prosthodontic:</strong> Complete and partial dentures, denture repairs</li>
+                </ul>
+                <p><strong>Note:</strong> Some services require preauthorization before treatment.</p>
+
+                <h4>Eligibility Requirements</h4>
+                <p>You must meet all of the following criteria:</p>
+                <ul>
+                    <li><strong>No Private Dental Insurance:</strong> No coverage through employer, family member's employer, pension benefits, or private plans</li>
+                    <li><strong>Income:</strong> Adjusted family net income less than $90,000</li>
+                    <li><strong>Tax Filing:</strong> You and your spouse/common-law partner (if applicable) must have filed Canadian tax returns for the previous year</li>
+                    <li><strong>Residency:</strong> Canadian resident for tax purposes</li>
+                </ul>
+                <p><strong>Exception:</strong> If you have dental coverage through a provincial, territorial, or federal government social program, you can still qualify. Coverage will be coordinated between the plans.</p>
+
+                <h4>When to Apply</h4>
+                <p>All eligible Canadians can now apply for the Canadian Dental Care Plan. Apply before you need dental care, as coverage only begins on your official start date. You will need to renew your coverage every year to confirm you still meet the eligibility requirements.</p>
+
+                <div class="more-info-row">
+                    <label>
+                        <input type="checkbox" id="checkbox-cdcp" onchange="toggleNextStep('next-step-cdcp', this.checked)">
+                        Provide more information
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 1.5 Canada Pension Plan Disability -->
+        <div class="benefit-item">
+            <div class="benefit-trigger" onclick="toggleBenefit('cppd-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">1.5</span>&nbsp;<span class="benefit-title">Canada Pension Plan Disability (CPP-D)</span>
+            </div>
+            <div class="benefit-content" id="cppd-content">
+
+                <p>Canada Pension Plan disability benefits are designed to provide partial income replacement to eligible Canada Pension Plan contributors who are under the age of 65 and have a severe and prolonged disability. This is a taxable monthly payment for individuals who have contributed to the CPP during their working years and can no longer work due to their disability.</p>
+                <p><strong>Important:</strong> Benefits start 4 months after you are deemed disabled. You may receive up to a maximum of 12 months of retroactive payments from the date Service Canada received your application.</p>
+
+                <h4>Benefit Amount</h4>
+                <p>Disability Pension (2026):</p>
+                <ul>
+                    <li><strong>Maximum:</strong> $1,741.20 per month</li>
+                    <li><strong>Average:</strong> $1,191.72 per month</li>
+                </ul>
+                <p><strong>Children's Benefit:</strong> Children of CPP disability beneficiaries are also eligible for a monthly benefit up to age 18, or up to age 25 if they are attending school part-time or full-time.</p>
+                <p><strong>Benefit Ends:</strong> At age 65, your CPP disability benefit automatically converts to a CPP retirement pension.</p>
+
+                <h4>Eligibility Requirements</h4>
+                <p>You must meet all of the following criteria:</p>
+                <ul>
+                    <li><strong>Age:</strong> Between 18 and 64 years old</li>
+                    <li><strong>CPP Contributions:</strong> You contributed enough years to the CPP before you first became severely disabled and have been continuously disabled since that time</li>
+                    <li><strong>Severe Disability:</strong> Your condition prevents you from working at any job regularly (not just your previous job). A substantially gainful occupation is a job that pays wages equal to or greater than the maximum annual amount a person could receive as a disability pension. In 2026, this amount is $20,971.45 (before tax)</li>
+                    <li><strong>Prolonged Disability:</strong> Your disability is long-term and of indefinite duration, or is likely to result in death</li>
+                    <li><strong>Work Earnings:</strong> If you earn less than $7,400 (before tax), this should not affect your disability benefits. If you earn between $7,400 and $20,971.45 (before tax), this may demonstrate that you are regularly capable of working and it may affect your disability benefits</li>
+                </ul>
+
+                <h4>When to Apply</h4>
+                <p>Apply as soon as you develop a severe and prolonged disability that prevents you from working regularly at any job. You may still qualify for CPP disability benefits even if you stopped working a while ago or didn't apply right away.</p>
+                <p><strong>Processing Time:</strong> It can take up to 120 days (4 months) for Service Canada to make a decision on your application.</p>
+                <p><strong>Note:</strong> If you live in Quebec, apply to the Quebec Pension Plan (QPP) instead.</p>
+
+                <div class="more-info-row">
+                    <label>
+                        <input type="checkbox" id="checkbox-cppd" onchange="toggleNextStep('next-step-cppd', this.checked)">
+                        Provide more information
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
     </section>
 
     <!-- Next Steps: appears after all Benefits, only when a checkbox is checked -->
@@ -249,45 +485,94 @@
         <hr class="section-divider" style="margin-top: 0;">
         <h2 class="indented-title">Next Steps</h2>
 
+        <!-- 2.1 Canada Disability Benefit -->
         <div class="next-step-item" id="next-step-cdb">
-            <h3>Canada Disability Benefit (CDB)</h3>
+            <div class="next-step-trigger" onclick="toggleBenefit('next-step-cdb-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">2.1</span>&nbsp;<span class="benefit-title">Canada Disability Benefit (CDB)</span>
+            </div>
+            <div class="next-step-content" id="next-step-cdb-content">
 
-            <p><strong>Description:</strong> Up to $200/month in support payments.</p>
+                <h4>Description</h4>
+                <p>Up to $200/month in support payments.</p>
 
-            <h4>Application Methods</h4>
-            <p>You can apply online through the Service Canada portal, by mail, or in person:</p>
-            <ul>
-                <li><strong>Online (Recommended):</strong> Apply through the Service Canada online portal</li>
-                <li><strong>By Mail or In Person:</strong> Complete a printable application form and mail it to Service Canada Centre, CDB Processing Centre, P.O. Box 60, Boucherville, QC J4B 5E6, or drop it off at your nearest Service Canada office</li>
-            </ul>
+                <h4>Application Methods</h4>
+                <p>You can apply online through the Service Canada portal, by mail, or in person:</p>
+                <ul>
+                    <li><strong>Online (Recommended):</strong> Apply through the Service Canada online portal</li>
+                    <li><strong>By Mail or In Person:</strong> Complete a printable application form and mail it to Service Canada Centre, CDB Processing Centre, P.O. Box 60, Boucherville, QC J4B 5E6, or drop it off at your nearest Service Canada office</li>
+                </ul>
 
-            <h4>Letter From Service Canada</h4>
-            <ul>
-                <li><strong>If You Have Received a Letter:</strong> The government is sending letters in June 2025 to people already approved for the Disability Tax Credit who meet most eligibility criteria. The letter includes a unique application code.</li>
-                <li><strong>If You Didn't Receive a Letter:</strong> You can still apply—just complete the full application form without the code.</li>
-            </ul>
+                <h4>Letter From Service Canada</h4>
+                <ul>
+                    <li><strong>If You Have Received a Letter:</strong> The government is sending letters in June 2025 to people already approved for the Disability Tax Credit who meet most eligibility criteria. The letter includes a unique application code.</li>
+                    <li><strong>If You Didn't Receive a Letter:</strong> You can still apply—just complete the full application form without the code.</li>
+                </ul>
 
-            <h4>Processing Time</h4>
-            <p>It may take up to 28 calendar days for Service Canada to process your application, or up to 49 days if you are applying on behalf of someone else as their legal representative.</p>
+                <h4>Processing Time</h4>
+                <p>It may take up to 28 calendar days for Service Canada to process your application, or up to 49 days if you are applying on behalf of someone else as their legal representative.</p>
 
-            <h4>Apply Online</h4>
-            <p>To apply online, click: <a href="https://www.canada.ca/en/services/benefits/disability/canada-disability-benefit/apply.html" target="_blank">Canada Disability Benefit | Apply Online</a></p>
+                <h4>Apply Online</h4>
+                <p>To apply online, click: <a href="https://www.canada.ca/en/services/benefits/disability/canada-disability-benefit/apply.html" target="_blank">Canada Disability Benefit | Apply Online</a></p>
 
-            <h4>Further Assistance</h4>
-            <p>Service Canada CDB Call Center:</p>
-            <ul>
-                <li><strong>Phone:</strong> 1-833-486-3007</li>
-                <li><strong>TTY:</strong> 1-833-467-2700</li>
-            </ul>
+                <h4>Further Assistance</h4>
+                <p>Service Canada CDB Call Center:</p>
+                <ul>
+                    <li><strong>Phone:</strong> 1-833-486-3007</li>
+                    <li><strong>TTY:</strong> 1-833-467-2700</li>
+                </ul>
+
+            </div>
         </div>
+
+        <!-- 2.2 Disability Tax Credit -->
+        <div class="next-step-item" id="next-step-dtc">
+            <div class="next-step-trigger" onclick="toggleBenefit('next-step-dtc-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">2.2</span>&nbsp;<span class="benefit-title">Disability Tax Credit (DTC)</span>
+            </div>
+            <div class="next-step-content" id="next-step-dtc-content">
+                <p>[Next steps content for the DTC will be added here.]</p>
+            </div>
+        </div>
+
+        <!-- 2.3 Guaranteed Access Program -->
+        <div class="next-step-item" id="next-step-gap">
+            <div class="next-step-trigger" onclick="toggleBenefit('next-step-gap-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">2.3</span>&nbsp;<span class="benefit-title">Guaranteed Access Program (GAP)</span>
+            </div>
+            <div class="next-step-content" id="next-step-gap-content">
+                <p>[Next steps content for the GAP will be added here.]</p>
+            </div>
+        </div>
+
+        <!-- 2.4 Canadian Dental Care Plan -->
+        <div class="next-step-item" id="next-step-cdcp">
+            <div class="next-step-trigger" onclick="toggleBenefit('next-step-cdcp-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">2.4</span>&nbsp;<span class="benefit-title">Canadian Dental Care Plan (CDCP)</span>
+            </div>
+            <div class="next-step-content" id="next-step-cdcp-content">
+                <p>[Next steps content for the CDCP will be added here.]</p>
+            </div>
+        </div>
+
+        <!-- 2.5 Canada Pension Plan Disability -->
+        <div class="next-step-item" id="next-step-cppd">
+            <div class="next-step-trigger" onclick="toggleBenefit('next-step-cppd-content', this)">
+                <span class="benefit-arrow">▶</span><span class="benefit-number">2.5</span>&nbsp;<span class="benefit-title">Canada Pension Plan Disability (CPP-D)</span>
+            </div>
+            <div class="next-step-content" id="next-step-cppd-content">
+                <p>[Next steps content for CPP-D will be added here.]</p>
+            </div>
+        </div>
+
     </section>
 
 </div><!-- end .dbp-widget -->
 
 <script>
-    function toggleBenefit(contentId) {
+    function toggleBenefit(contentId, trigger) {
         const content = document.getElementById(contentId);
         content.classList.toggle('open');
+        trigger.classList.toggle('open');
     }
 
     function toggleNextStep(stepId, isChecked) {
