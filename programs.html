@@ -148,12 +148,184 @@
             }
         }
 
+        /* ===== Navigation ===== */
+        .navigation.programs.w-nav {
+            position: relative;
+            z-index: 1000;
+            background-color: white;
+        }
+
+        .navigation.programs.w-nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            max-width: 100%;
+            height: 1px;
+            background: #ccc;
+        }
+
+        .navigation.programs {
+            display: flex;
+            align-items: center;
+            padding: 30px 50px;
+        }
+
+        .navigation-wrap {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-link.w-nav-brand {
+            z-index: 1;
+            text-decoration: none;
+            color: #1a1b1f;
+            display: inline-block;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-link:hover { opacity: 0.8; }
+        .logo-link:active { opacity: 0.7; }
+
+        .navigation .columns-5.w-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .navigation .w-col {
+            float: none;
+            width: auto;
+            padding: 0;
+        }
+
+        .navigation .image.logo {
+            display: block;
+            width: 42px;
+            height: auto;
+        }
+
+        .navigation .text-block {
+            padding-left: 10px;
+            font-family: Montserrat, sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1b1f;
+            white-space: nowrap;
+        }
+
+        /* Menu: absolutely covers nav-wrap, centers items, passes clicks through */
+        .navigation .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .navigation-items.w-nav-menu {
+            display: flex;
+            align-items: center;
+            pointer-events: auto;
+        }
+
+        .navigation-item.w-nav-link {
+            opacity: 0.6;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 9px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 20px;
+            text-decoration: none;
+            color: #1a1b1f;
+            display: inline-block;
+            font-family: Montserrat, sans-serif;
+            transition: opacity 0.2s;
+        }
+
+        .navigation-item:hover { opacity: 0.9; color: #32343a; }
+        .navigation-item.w--current { opacity: 1; font-weight: 600; }
+        .navigation-item.faq { padding-left: 10px; margin-right: 10px; }
+        .navigation-item.contact { padding-left: 10px; }
+
+        .navigation .image-4 {
+            display: block;
+            width: 38px;
+            height: auto;
+            margin: 0 6px;
+        }
+
+        /* Hamburger — hidden on desktop */
+        .menu-button.w-nav-button {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            z-index: 1;
+            position: relative;
+            pointer-events: auto;
+        }
+
+        .menu-icon.menu-flag {
+            display: block;
+            height: 28px;
+            width: auto;
+        }
+
+        @media screen and (max-width: 991px) {
+            .navigation.programs { padding: 12px 20px; }
+
+            /* Push hamburger to far right */
+            .navigation .menu { justify-content: flex-end; }
+
+            /* Nav items become a full-width dropdown */
+            .navigation-items.w-nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 10px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+                border-top: 1px solid #eee;
+                z-index: 999;
+            }
+
+            .navigation-items.w-nav-menu.nav-open { display: flex; }
+
+            .navigation-item.w-nav-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 10px 20px;
+            }
+
+            .navigation .image-4 { display: none; }
+            .menu-button.w-nav-button { display: block; }
+        }
+
+        @media screen and (max-width: 479px) {
+            .navigation.programs { padding: 10px 15px; }
+            .navigation .text-block { font-size: 13px; }
+        }
+
         /* Scoped reset — overrides Webflow global styles inside our widget */
         .dbp-widget {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif !important;
             max-width: 900px !important;
             margin: 0 auto !important;
-            padding: 20px !important;
+            padding: 50px 20px 70px !important;
             box-sizing: border-box !important;
         }
 
@@ -432,6 +604,8 @@
     </style>
 </head>
 <body>
+
+<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation programs w-nav"><div class="navigation-wrap"><a href="/cdsb-eligibility" class="logo-link w-nav-brand"><div class="columns-5 w-row"><div class="column-6 w-col w-col-6 w-col-medium-6"></div><div class="column-5 w-col w-col-6 w-col-medium-6"></div></div></a><div class="menu"><nav role="navigation" class="navigation-items w-nav-menu"><a href="/disability-benefits-assessment-tool" class="navigation-item w-nav-link">Eligibility</a><a href="/dtc-eligibility-2024" target="_blank" class="navigation-item faq w-nav-link">FAQ</a><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png" loading="lazy" width="50" alt="" class="image-4"><a href="/privacy-policy" class="navigation-item w-nav-link">Privacy</a><a href="/contact" class="navigation-item contact w-nav-link">Contact</a></nav><div class="menu-button w-nav-button" aria-label="menu" role="button" tabindex="0" aria-expanded="false"><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5f66ba195f18246d973acac7_menu-mobile.png" height="30" alt="" class="menu-icon menu-flag"></div></div></div></div>
 
 <div class="dbp-widget">
 
@@ -754,7 +928,7 @@
                             <hr class="content-divider">
                             <div class="eligibility-checklist">
                                 <label><input type="checkbox"> <strong>Option A:&nbsp;</strong>Determine Your Benefit Amount</label>
-                                <label><input type="checkbox"> <strong>Option B:&nbsp;</strong>Learn More About The Program</label>
+                                <label><input type="checkbox"> <strong>Option B:&nbsp;</strong><a href="https://www.rdspcanada.ca/programs/guaranteed-access-program" target="_blank">Learn More About The Program</a></label>
                             </div>
                         </div>
                     </div>
@@ -1245,7 +1419,7 @@
             </label>
             <label style="display: block; margin-top: 8px;">
                 <input type="checkbox">
-                Option B: Learn More About The Program
+                Option B: <a href="https://www.rdspcanada.ca/programs/guaranteed-access-program" target="_blank">Learn More About The Program</a>
             </label>
         </div>
         
@@ -1545,6 +1719,25 @@
             section.classList.remove('visible');
         }
     }
+
+    // Mobile nav toggle
+    (function() {
+        const menuBtn = document.querySelector('.menu-button.w-nav-button');
+        const navMenu = document.querySelector('.navigation-items.w-nav-menu');
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = navMenu.classList.toggle('nav-open');
+                menuBtn.setAttribute('aria-expanded', isOpen);
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navigation.programs.w-nav')) {
+                    navMenu.classList.remove('nav-open');
+                    menuBtn.setAttribute('aria-expanded', false);
+                }
+            });
+        }
+    })();
 </script>
 
 
