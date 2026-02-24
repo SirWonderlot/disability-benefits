@@ -590,10 +590,51 @@
         .dbp-widget .apply-methods .eligibility-checklist label {
             color: #0264b4 !important;
             font-weight: 500 !important;
+            font-size: 1em !important;
         }
 
         .dbp-widget .apply-methods .eligibility-checklist input[type="checkbox"] {
             accent-color: #0264b4 !important;
+            width: 1em !important;
+            height: 1em !important;
+            margin-top: 2px !important;
+        }
+
+        .dbp-widget .more-info-row label {
+            font-size: 1em !important;
+        }
+
+        .dbp-widget .more-info-row input[type="checkbox"] {
+            width: 1em !important;
+            height: 1em !important;
+        }
+
+        /* ── GAP Continue button ── */
+        .gap-continue-section {
+            display: none;
+            padding-top: 8px;
+        }
+
+        .dbp-widget .gap-continue-section .content-divider {
+            margin-top: 8px !important;
+            margin-bottom: 24px !important;
+        }
+
+        .dbp-widget .gap-continue-btn {
+            display: inline-block !important;
+            background: #e8e8e8 !important;
+            border-radius: 10px !important;
+            padding: 10px 28px !important;
+            font-size: inherit !important;
+            font-weight: 600 !important;
+            color: #1a1b1f !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            transition: background 0.2s !important;
+        }
+
+        .dbp-widget .gap-continue-btn:hover {
+            background: #dedede !important;
         }
 
         @media (min-width: 768px) {
@@ -927,8 +968,12 @@
 
                             <hr class="content-divider">
                             <div class="eligibility-checklist">
-                                <label><input type="checkbox"> <strong>Option A:&nbsp;</strong>Determine Your Benefit Amount</label>
-                                <label><input type="checkbox"> <strong>Option B:&nbsp;</strong><a href="https://www.rdspcanada.ca/programs/guaranteed-access-program" target="_blank">Learn More About The Program</a></label>
+                                <label><input type="checkbox" data-group="gap-main" value="a" onchange="handleGapCheckbox(this, 'gap-continue-main')"> <strong>Option A:&nbsp;</strong>Determine Your Benefit Amount</label>
+                                <label><input type="checkbox" data-group="gap-main" value="b" onchange="handleGapCheckbox(this, 'gap-continue-main')"> <strong>Option B:&nbsp;</strong>Learn More About The Program</label>
+                            </div>
+                            <div id="gap-continue-main" class="gap-continue-section">
+                                <hr class="content-divider">
+                                <a href="#" target="_blank" class="gap-continue-btn">Continue</a>
                             </div>
                         </div>
                     </div>
@@ -1414,13 +1459,17 @@
         <div class="more-info-row">
             <p style="margin-bottom: 10px;">Please select your preferred option:</p>
             <label>
-                <input type="checkbox">
+                <input type="checkbox" data-group="gap-next" value="a" onchange="handleGapCheckbox(this, 'gap-continue-next')">
                 Option A: Determine Your Benefit Amount
             </label>
             <label style="display: block; margin-top: 8px;">
-                <input type="checkbox">
-                Option B: <a href="https://www.rdspcanada.ca/programs/guaranteed-access-program" target="_blank">Learn More About The Program</a>
+                <input type="checkbox" data-group="gap-next" value="b" onchange="handleGapCheckbox(this, 'gap-continue-next')">
+                Option B: Learn More About The Program
             </label>
+            <div id="gap-continue-next" class="gap-continue-section">
+                <hr class="content-divider">
+                <a href="#" target="_blank" class="gap-continue-btn">Continue</a>
+            </div>
         </div>
         
         </div>
@@ -1717,6 +1766,60 @@
             section.classList.add('visible');
         } else {
             section.classList.remove('visible');
+        }
+    }
+
+    function handleGapCheckbox(checkbox, continueId) {
+        const group = checkbox.dataset.group;
+        // Uncheck the other option in this group
+        document.querySelectorAll('input[data-group="' + group + '"]').forEach(function(cb) {
+            if (cb !== checkbox) cb.checked = false;
+        });
+
+        const continueSection = document.getElementById(continueId);
+        const continueBtn = continueSection.querySelector('a.gap-continue-btn');
+
+        if (checkbox.checked) {
+            // Set destination link
+            continueBtn.href = checkbox.value === 'a'
+                ? 'https://www.rdspcanada.ca/programs/gap-program-questionnaire'
+                : 'https://www.rdspcanada.ca/programs/guaranteed-access-program';
+
+            // Show and expand parents by adding the delta height
+            if (continueSection.style.display !== 'block') {
+                continueSection.style.display = 'block';
+                var added = continueSection.scrollHeight;
+                var applyMethods = continueSection.closest('.apply-methods');
+                if (applyMethods && parseInt(applyMethods.style.maxHeight) > 0)
+                    applyMethods.style.maxHeight = (parseInt(applyMethods.style.maxHeight) + added) + 'px';
+                var applySection = continueSection.closest('.apply-section');
+                if (applySection && parseInt(applySection.style.maxHeight) > 0)
+                    applySection.style.maxHeight = (parseInt(applySection.style.maxHeight) + added) + 'px';
+                var benefitContent = continueSection.closest('.benefit-content');
+                if (benefitContent && benefitContent.classList.contains('open'))
+                    benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) + added) + 'px';
+                var nextStepContent = continueSection.closest('.next-step-content');
+                if (nextStepContent && nextStepContent.classList.contains('open'))
+                    nextStepContent.style.maxHeight = (parseInt(nextStepContent.style.maxHeight) + added) + 'px';
+            }
+        } else {
+            // Hide and shrink parents by removing the delta height
+            if (continueSection.style.display === 'block') {
+                var removed = continueSection.scrollHeight;
+                continueSection.style.display = 'none';
+                var applyMethods = continueSection.closest('.apply-methods');
+                if (applyMethods && parseInt(applyMethods.style.maxHeight) > 0)
+                    applyMethods.style.maxHeight = (parseInt(applyMethods.style.maxHeight) - removed) + 'px';
+                var applySection = continueSection.closest('.apply-section');
+                if (applySection && parseInt(applySection.style.maxHeight) > 0)
+                    applySection.style.maxHeight = (parseInt(applySection.style.maxHeight) - removed) + 'px';
+                var benefitContent = continueSection.closest('.benefit-content');
+                if (benefitContent && benefitContent.classList.contains('open'))
+                    benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) - removed) + 'px';
+                var nextStepContent = continueSection.closest('.next-step-content');
+                if (nextStepContent && nextStepContent.classList.contains('open'))
+                    nextStepContent.style.maxHeight = (parseInt(nextStepContent.style.maxHeight) - removed) + 'px';
+            }
         }
     }
 
