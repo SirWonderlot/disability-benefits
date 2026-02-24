@@ -4,7 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3.1 Disability Benefits Programs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Footer styles */
+        body {
+            margin: 0;
+            font-family: Montserrat, sans-serif;
+        }
+
+        .section.footer.rebuild.profile {
+            background-color: #757474;
+            width: auto;
+            margin-left: 0;
+            margin-right: 0;
+            padding-top: 20px;
+            padding-bottom: 0;
+        }
+
+        .footer-container.w-container {
+            max-width: 940px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Logo row — centered */
+        .footer-div {
+            display: flex;
+            justify-content: center;
+            padding: 15px 10px 10px;
+        }
+
+        .image-2.logo-footer {
+            display: block;
+        }
+
+        /* Two-column link row — flex, centered */
+        .footer-row.w-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 15px 0 20px;
+        }
+
+        /* Left column: right-align text, right border = divider */
+        .footer-col.w-col.footer-left-col {
+            width: 240px;
+            flex-shrink: 0;
+            text-align: right;
+            padding-right: 30px;
+            border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Right column: left-align text */
+        .footer-col.w-col.footer-right-col {
+            width: 240px;
+            flex-shrink: 0;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .paragraph-12.footer-left.paragraph-footer,
+        .paragraph-11.footer-right {
+            color: white;
+            font-size: 13px;
+            line-height: 26px;
+            margin: 0;
+        }
+
+        .link-3, .link-5, .link-6, .link-7, .link-8, .link-9,
+        .link-11, .link-12, .link-13 {
+            color: white !important;
+            text-decoration: none;
+            display: block;
+            font-family: Montserrat, sans-serif;
+            font-size: 13px;
+            line-height: 26px;
+        }
+
+        .link-3:hover, .link-5:hover, .link-6:hover, .link-7:hover,
+        .link-8:hover, .link-9:hover, .link-11:hover, .link-12:hover, .link-13:hover {
+            opacity: 0.75;
+        }
+
+        /* Full-width divider above copyright */
+        .footer-full-divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Bottom copyright row */
+        .footer-bottom.footer-container {
+            padding-top: 12px;
+            padding-bottom: 14px;
+            text-align: center;
+        }
+
+        .div-block-3 {
+            display: inline-block;
+        }
+
+        .webflow-link.w-inline-block {
+            opacity: 0.75;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .webflow-link.w-inline-block:hover {
+            opacity: 1;
+        }
+
+        .paragraph-tiny {
+            color: white;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .paragraph-tiny.footer-tiny {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            .footer-row.w-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-col.w-col.footer-left-col {
+                text-align: center;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                padding-right: 0;
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+            }
+
+            .footer-col.w-col.footer-right-col {
+                text-align: center;
+                padding-left: 0;
+            }
+        }
+
         /* Scoped reset — overrides Webflow global styles inside our widget */
         .dbp-widget {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif !important;
@@ -120,13 +263,13 @@
         .dbp-widget .benefit-content {
             overflow: hidden !important;
             max-height: 0;
-            transition: max-height 1s linear !important;
+            transition: max-height 0.7s linear !important;
         }
 
         /* Inner wrapper holds padding and background */
         .dbp-widget .benefit-content-inner {
             padding: 15px !important;
-            background: #f7f7f7 !important;
+            background: transparent !important;
         }
 
         .dbp-widget .benefit-content-inner h4 {
@@ -200,13 +343,13 @@
         .dbp-widget .next-step-content {
             overflow: hidden !important;
             max-height: 0;
-            transition: max-height 1s linear !important;
+            transition: max-height 0.7s linear !important;
         }
 
         /* Inner wrapper holds padding and background */
         .dbp-widget .next-step-content-inner {
             padding: 15px !important;
-            background: rgba(238, 243, 249, 0.6) !important;
+            background: transparent !important;
         }
 
         .dbp-widget .next-step-content-inner h4 {
@@ -224,9 +367,66 @@
             margin-bottom: 8px !important;
         }
 
+        /* ── Apply Now flow ── */
+        .dbp-widget .apply-now-row {
+            margin-top: 16px !important;
+        }
+
+        .dbp-widget .apply-now-row label {
+            color: #0264b4 !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+        }
+
+        .dbp-widget .apply-now-row input[type="checkbox"] {
+            accent-color: #0264b4 !important;
+            margin-right: 6px !important;
+        }
+
+        .dbp-widget .content-divider {
+            border: none !important;
+            border-top: 1px solid #ccc !important;
+            margin: 16px 0 !important;
+        }
+
+        .dbp-widget .apply-section {
+            overflow: hidden !important;
+            max-height: 0;
+            transition: max-height 0.3s ease !important;
+        }
+
+        .dbp-widget .eligibility-checklist label {
+            display: flex !important;
+            align-items: flex-start !important;
+            margin-bottom: 8px !important;
+            cursor: pointer !important;
+        }
+
+        .dbp-widget .eligibility-checklist input[type="checkbox"] {
+            accent-color: #0264b4 !important;
+            margin-right: 6px !important;
+            flex-shrink: 0 !important;
+            margin-top: 3px !important;
+        }
+
+        .dbp-widget .apply-methods {
+            overflow: hidden !important;
+            max-height: 0;
+            transition: max-height 0.3s ease !important;
+        }
+
+        .dbp-widget .apply-methods .eligibility-checklist label {
+            color: #0264b4 !important;
+            font-weight: 500 !important;
+        }
+
+        .dbp-widget .apply-methods .eligibility-checklist input[type="checkbox"] {
+            accent-color: #0264b4 !important;
+        }
+
         @media (min-width: 768px) {
         .dbp-widget {
-        font-size: 18px !important;
+        font-size: 16px !important;
         }
     }
     </style>
@@ -262,7 +462,7 @@
     <hr class="section-divider">
 
     <section>
-        <h2 class="indented-title">3.3 Benefits</h2>
+        <h2 class="indented-title">3.3 Benefits Programs</h2>
 
         <!-- 1.1 Canada Disability Benefit -->
         <div class="benefit-item">
@@ -294,11 +494,55 @@
                     <h4>Retroactive Payments</h4>
                     <p>The Canada Disability Benefit can provide retroactive payments for up to 24 months from when your application is received and approved, but payments cannot extend to any period before June 2025.</p>
 
-                    <div class="more-info-row">
+                    <div class="apply-now-row">
+                        <hr class="content-divider">
                         <label>
-                            <input type="checkbox" id="checkbox-cdb" onchange="toggleNextStep('next-step-cdb', this.checked)">
-                            Provide more information
+                            <input type="checkbox" id="checkbox-apply-cdb" onchange="toggleApplySection('cdb-apply-section', this.checked)">
+                            Apply Now
                         </label>
+                    </div>
+
+                    <div class="apply-section" id="cdb-apply-section">
+                        <hr class="content-divider">
+                        <p><strong>To apply, you must have the following</strong>(check all that apply)<strong>:</strong></p>
+                        <div class="eligibility-checklist">
+                            <label><input type="checkbox" class="elig-cdb" onchange="checkAllEligibility('elig-cdb', 'cdb-apply-methods')"> Disability Tax Credit qualification</label>
+                            <label><input type="checkbox" class="elig-cdb" onchange="checkAllEligibility('elig-cdb', 'cdb-apply-methods')"> Be aged 18–64 years</label>
+                            <label><input type="checkbox" class="elig-cdb" onchange="checkAllEligibility('elig-cdb', 'cdb-apply-methods')"> Have filed a 2024 federal tax return (you and your spouse/common-law partner, if applicable)</label>
+                            <label><input type="checkbox" class="elig-cdb" onchange="checkAllEligibility('elig-cdb', 'cdb-apply-methods')"> Be a Canadian resident for tax purposes</label>
+                            <label><input type="checkbox" class="elig-cdb" onchange="checkAllEligibility('elig-cdb', 'cdb-apply-methods')"> Have one of these statuses: Canadian citizen, permanent resident, registered under the Indian Act, or temporary resident in Canada for 18+ months</label>
+                            <label><input type="checkbox" class="elig-cdb" onchange="checkAllEligibility('elig-cdb', 'cdb-apply-methods')"> Not be incarcerated in federal prison for 2+ years</label>
+                        </div>
+
+                        <div class="apply-methods" id="cdb-apply-methods">
+                            <hr class="content-divider">
+
+                            <h4>Application Methods</h4>
+                            <p>You can apply online through the Service Canada portal, by mail, or in person:</p>
+                            <ul>
+                                <li><strong>Online (Recommended):</strong> Apply through the Service Canada online portal</li>
+                                <li><strong>By Mail or In Person:</strong> Complete a printable application form and mail it to Service Canada Centre, CDB Processing Centre, P.O. Box 60, Boucherville, QC J4B 5E6, or drop it off at your nearest Service Canada office</li>
+                            </ul>
+
+                            <h4>Letter From Service Canada</h4>
+                            <ul>
+                                <li><strong>If You Have Received a Letter:</strong> The government is sending letters in June 2025 to people already approved for the Disability Tax Credit who meet most eligibility criteria. The letter includes a unique application code.</li>
+                                <li><strong>If You Didn't Receive a Letter:</strong> You can still apply—just complete the full application form without the code.</li>
+                            </ul>
+
+                            <h4>Processing Time</h4>
+                            <p>It may take up to 28 calendar days for Service Canada to process your application, or up to 49 days if you are applying on behalf of someone else as their legal representative.</p>
+
+                            <h4>Apply Online</h4>
+                            <p>To apply online, click: <a href="https://www.canada.ca/en/services/benefits/disability/canada-disability-benefit/apply.html" target="_blank">Canada Disability Benefit | Apply Online</a></p>
+
+                            <h4>Further Assistance</h4>
+                            <p>Service Canada CDB Call Center:</p>
+                            <ul>
+                                <li><strong>Phone:</strong> 1-833-486-3007</li>
+                                <li><strong>TTY:</strong> 1-833-467-2700</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -354,9 +598,81 @@
 
                     <div class="more-info-row">
                         <label>
-                            <input type="checkbox" id="checkbox-dtc" onchange="toggleNextStep('next-step-dtc', this.checked)">
+                            <input type="checkbox" id="checkbox-dtc" onchange="toggleApplySection('dtc-apply-section', this.checked)">
                             Provide more information
                         </label>
+                    </div>
+
+                    <div class="apply-section" id="dtc-apply-section">
+                        <hr class="content-divider">
+                        <p><strong>Please confirm the following</strong> (check all that apply):</p>
+                        <div class="eligibility-checklist">
+                            <label><input type="checkbox" class="elig-dtc" onchange="checkAllEligibility('elig-dtc', 'dtc-apply-methods')"> I have a prolonged medical condition(s) that has lasted or is expected to last for a continuous period of at least 12 months</label>
+                            <label><input type="checkbox" class="elig-dtc" onchange="checkAllEligibility('elig-dtc', 'dtc-apply-methods')"> This condition/restriction is present all or almost all of the time (generally at least 90%)</label>
+                            <label><input type="checkbox" class="elig-dtc" onchange="checkAllEligibility('elig-dtc', 'dtc-apply-methods')"> You are unable to do the activity, or it takes 3 times longer than someone of similar age without the impairment, even with the use of appropriate therapy, medication, and devices (or it takes 14+ hours in a week to manage your condition, for example, insulin for diabetes)</label>
+                        </div>
+
+                        <div class="apply-methods" id="dtc-apply-methods">
+                            <hr class="content-divider">
+
+                            <h4>Application Process</h4>
+                            <p>To apply for the DTC, you must complete Form T2201 (Disability Tax Credit Certificate), which has two parts:</p>
+                            <ul>
+                                <li><strong>Part A:</strong> Completed by you (the applicant)</li>
+                                <li><strong>Part B:</strong> Completed and certified by a qualified medical practitioner (doctor, nurse practitioner, or specialist)</li>
+                            </ul>
+                            <p>The CRA evaluates your application based on functional limitations (how your condition affects daily activities), not the diagnosis itself.</p>
+
+                            <h4>When to Apply on Your Own</h4>
+                            <p><strong>Best for:</strong></p>
+                            <ul>
+                                <li>Straightforward cases with permanent physical impairments</li>
+                                <li>Obvious and well-documented limitations</li>
+                                <li>Clear-cut disabilities</li>
+                            </ul>
+                            <p><strong>Pros:</strong></p>
+                            <ul>
+                                <li>Free</li>
+                                <li>Full control of the process</li>
+                            </ul>
+                            <p><strong>Cons:</strong></p>
+                            <ul>
+                                <li>Many applications are denied due to incorrect completion, not lack of eligibility</li>
+                                <li>Doctors often focus on diagnoses instead of functional limitations</li>
+                                <li>Missing key wording or improper framing can lead to rejection of valid applications</li>
+                            </ul>
+
+                            <h4>When to Seek Professional Assistance</h4>
+                            <p>Strongly consider assistance if you have:</p>
+                            <ul>
+                                <li>Complex, fluctuating, or poorly understood conditions</li>
+                                <li>Mental health conditions, chronic pain, neurological conditions, autoimmune disorders, or multiple diagnoses</li>
+                                <li>Conditions requiring application under "cumulative effect of significant limitations"</li>
+                                <li>Non-obvious impairments that impact daily life in subtle but serious ways</li>
+                            </ul>
+                            <p><strong>Benefits of assistance:</strong></p>
+                            <ul>
+                                <li>Expert understanding of CRA language and requirements</li>
+                                <li>Guidance for both you and your medical professional</li>
+                                <li>Proper framing of functional limitations</li>
+                                <li>Significantly increased approval chances</li>
+                                <li>Reduced stress and time</li>
+                                <li>Help ensuring past years are claimed correctly</li>
+                            </ul>
+                            <p><strong>Cost consideration:</strong></p>
+                            <ul>
+                                <li>The recommended service charges a percentage of your potential refund from retroactive years (and only if you successfully qualify — no refund, no fees)</li>
+                                <li>Fees are fully disclosed upfront</li>
+                                <li>You only pay from funds you wouldn't have received otherwise</li>
+                            </ul>
+                            <p>Due to the importance of qualifying for the DTC, receiving assistance is typically recommended.</p>
+
+                            <hr class="content-divider">
+                            <div class="eligibility-checklist">
+                                <label><input type="checkbox"> Apply with assistance</label>
+                                <label><input type="checkbox"> Apply without assistance</label>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -366,7 +682,7 @@
         <!-- 1.3 Guaranteed Access Program -->
         <div class="benefit-item">
             <div class="benefit-trigger" onclick="toggleBenefit('gap-content', this)">
-                <span class="benefit-arrow">▶</span><span class="benefit-number">1.3</span>&nbsp;<span class="benefit-title">Guaranteed Access Program (GAP)</span>
+                <span class="benefit-arrow">▶</span><span class="benefit-number">3.3.3</span>&nbsp;<span class="benefit-title">Guaranteed Access Program (GAP)</span>
             </div>
             <div class="benefit-content" id="gap-content">
                 <div class="benefit-content-inner">
@@ -395,9 +711,52 @@
 
                     <div class="more-info-row">
                         <label>
-                            <input type="checkbox" id="checkbox-gap" onchange="toggleNextStep('next-step-gap', this.checked)">
+                            <input type="checkbox" id="checkbox-gap" onchange="toggleApplySection('gap-apply-section', this.checked)">
                             Provide more information
                         </label>
+                    </div>
+
+                    <div class="apply-section" id="gap-apply-section">
+                        <hr class="content-divider">
+                        <p><strong>Please confirm the following:</strong></p>
+                        <div class="eligibility-checklist">
+                            <label><input type="checkbox" class="elig-gap" onchange="checkAllEligibility('elig-gap', 'gap-apply-methods')"> I am under the age of 80 years old</label>
+                            <label><input type="checkbox" class="elig-gap" onchange="checkAllEligibility('elig-gap', 'gap-apply-methods')"> I have a prolonged medical condition or conditions</label>
+                            <label><input type="checkbox" class="elig-gap" onchange="checkAllEligibility('elig-gap', 'gap-apply-methods')"> I am in need of insurance to cover my final expenses</label>
+                        </div>
+
+                        <div class="apply-methods" id="gap-apply-methods">
+                            <hr class="content-divider">
+
+                            <h4>Application Process</h4>
+
+                            <h4>Option A — Determine Your Benefit Amount</h4>
+                            <p style="font-weight: 500;">Best for individuals who feel ready to move forward.</p>
+                            <ul>
+                                <li>Begin the process to determine the tax-free Benefit Amount your loved ones may receive</li>
+                                <li>If you outlive the program term, the full Benefit Amount is paid directly to you</li>
+                                <li>Complete a short 2-minute questionnaire to start your eligibility review</li>
+                                <li>Review your results together with a Benefits Specialist (Zoom) to ensure you fully understand the program and can ask questions</li>
+                                <li>Receive step-by-step guidance and support with the enrolment process</li>
+                                <li>Your specialist will also review other benefit programs you may qualify for</li>
+                            </ul>
+
+                            <h4>Option B — Learn More About the Program (Recommended)</h4>
+                            <p style="font-weight: 500;">Best for individuals who would like a clear understanding before starting the questionnaire.</p>
+                            <ul>
+                                <li>Receive a clear, detailed explanation of how the program works</li>
+                                <li>Watch a short educational video that explains the program in simple terms</li>
+                                <li>Meet with a Benefits Specialist (Zoom) before completing the questionnaire to ask questions and walk through the program together</li>
+                                <li>Move forward only when you feel fully informed and comfortable</li>
+                                <li>Your specialist will also review other benefit programs you may qualify for</li>
+                            </ul>
+
+                            <hr class="content-divider">
+                            <div class="eligibility-checklist">
+                                <label><input type="checkbox"> <strong>Option A:&nbsp;</strong>Determine Your Benefit Amount</label>
+                                <label><input type="checkbox"> <strong>Option B:&nbsp;</strong>Learn More About The Program</label>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -407,7 +766,7 @@
         <!-- 1.4 Canadian Dental Care Plan -->
         <div class="benefit-item">
             <div class="benefit-trigger" onclick="toggleBenefit('cdcp-content', this)">
-                <span class="benefit-arrow">▶</span><span class="benefit-number">1.4</span>&nbsp;<span class="benefit-title">Canadian Dental Care Plan (CDCP)</span>
+                <span class="benefit-arrow">▶</span><span class="benefit-number">3.3.4</span>&nbsp;<span class="benefit-title">Canadian Dental Care Plan (CDCP)</span>
             </div>
             <div class="benefit-content" id="cdcp-content">
                 <div class="benefit-content-inner">
@@ -450,9 +809,59 @@
 
                     <div class="more-info-row">
                         <label>
-                            <input type="checkbox" id="checkbox-cdcp" onchange="toggleNextStep('next-step-cdcp', this.checked)">
-                            Provide more information
+                            <input type="checkbox" id="checkbox-cdcp" onchange="toggleApplySection('cdcp-apply-section', this.checked)">
+                            Apply Now
                         </label>
+                    </div>
+
+                    <div class="apply-section" id="cdcp-apply-section">
+                        <hr class="content-divider">
+                        <div class="eligibility-checklist">
+                            <label><input type="checkbox" class="elig-cdcp" onchange="checkAllEligibility('elig-cdcp', 'cdcp-apply-methods')"> I confirm that my 2024 income was under $90,000</label>
+                        </div>
+
+                        <div class="apply-methods" id="cdcp-apply-methods">
+                            <hr class="content-divider">
+
+                            <h4>Application Methods</h4>
+                            <p>You can apply online, by phone, or by mail:</p>
+                            <ul>
+                                <li><strong>Online (Recommended):</strong> Apply through your My Service Canada Account (MSCA)</li>
+                                <li><strong>By Phone:</strong> Call Service Canada at 1-833-537-4342 (TTY: 1-833-677-6262)</li>
+                                <li><strong>By Mail:</strong> Download and mail the application form to the address provided with the form</li>
+                            </ul>
+
+                            <h4>What You'll Need to Apply</h4>
+                            <p>Gather the following information for yourself and your spouse or common-law partner (if applicable):</p>
+                            <ul>
+                                <li>Social Insurance Number (SIN)</li>
+                                <li>Date of birth</li>
+                                <li>Mailing address</li>
+                                <li>Confirmation that you and your spouse/common-law partner (if applicable) have filed your tax returns for the previous year</li>
+                            </ul>
+
+                            <h4>Processing Time</h4>
+                            <p>Once your application is processed, you will receive a welcome package by mail from Sun Life with:</p>
+                            <ul>
+                                <li>Your CDCP member card</li>
+                                <li>Your coverage start date</li>
+                                <li>Co-payment information</li>
+                            </ul>
+                            <p><strong>Note:</strong> Welcome packages may take up to three months to arrive from the time you apply. You cannot receive dental care under the program until you have received your CDCP card and your coverage start date has begun.</p>
+
+                            <h4>Annual Renewal</h4>
+                            <p>You will need to renew your coverage every year to confirm you still meet the eligibility requirements.</p>
+
+                            <h4>Apply Online</h4>
+                            <p>To apply online, visit: <a href="https://www.canada.ca/en/services/benefits/dental/dental-care-plan/apply.html" target="_blank">Canadian Dental Care Plan | Apply Online</a></p>
+
+                            <h4>Further Assistance</h4>
+                            <p>Service Canada CDCP Call Center:</p>
+                            <ul>
+                                <li><strong>Phone:</strong> 1-833-537-4342</li>
+                                <li><strong>TTY:</strong> 1-833-677-6262</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -462,7 +871,7 @@
         <!-- 1.5 Canada Pension Plan Disability -->
         <div class="benefit-item">
             <div class="benefit-trigger" onclick="toggleBenefit('cppd-content', this)">
-                <span class="benefit-arrow">▶</span><span class="benefit-number">1.5</span>&nbsp;<span class="benefit-title">Canada Pension Plan Disability (CPP-D)</span>
+                <span class="benefit-arrow">▶</span><span class="benefit-number">3.3.5</span>&nbsp;<span class="benefit-title">Canada Pension Plan Disability (CPP-D)</span>
             </div>
             <div class="benefit-content" id="cppd-content">
                 <div class="benefit-content-inner">
@@ -496,9 +905,63 @@
 
                     <div class="more-info-row">
                         <label>
-                            <input type="checkbox" id="checkbox-cppd" onchange="toggleNextStep('next-step-cppd', this.checked)">
+                            <input type="checkbox" id="checkbox-cppd" onchange="toggleApplySection('cppd-apply-section', this.checked)">
                             Provide more information
                         </label>
+                    </div>
+
+                    <div class="apply-section" id="cppd-apply-section">
+                        <hr class="content-divider">
+
+                        <h4>Application Process (2 Steps)</h4>
+                        <p><strong>Step 1: Complete Your Application Form</strong></p>
+                        <p>You can apply online or by paper form:</p>
+                        <ul>
+                            <li><strong>Online (Recommended):</strong> Sign in to your My Service Canada Account (MSCA) and select "Apply for Canada Pension Plan disability benefits" from the Canada Pension Plan section</li>
+                            <li><strong>By Paper Form:</strong> Download and complete the appropriate form:
+                                <ul>
+                                    <li><strong>Standard Application:</strong> Application for Canada Pension Plan Disability Benefits (ISP-1151)</li>
+                                    <li><strong>Terminal Illness Application:</strong> Terminal Illness Application for Disability Benefits (ISP-2530A)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p><strong>Step 2: Submit Your Medical Form</strong></p>
+                        <p>After submitting your application, you must have a medical form completed:</p>
+                        <ul>
+                            <li>If you are currently receiving disability benefits from an insurance company or provincial/territorial agency, ask them to mail your most recent medical report(s) to Service Canada</li>
+                            <li>If not, work with your doctor or nurse practitioner to complete the required medical form</li>
+                        </ul>
+                        <p><strong>Note:</strong> Service Canada will pay up to $85 to your healthcare professional for completing the medical form. If they charge more than $85, you will need to pay the difference.</p>
+
+                        <h4>What You'll Need</h4>
+                        <ul>
+                            <li>Social Insurance Number (SIN)</li>
+                            <li>Employment history and CPP contribution information</li>
+                            <li>Medical information about your disability</li>
+                            <li>Banking information for direct deposit (recommended)</li>
+                        </ul>
+                        <p>Keep photocopies of everything you submit.</p>
+
+                        <h4>Processing Time</h4>
+                        <ul>
+                            <li><strong>Standard Applications:</strong> Up to 120 calendar days (4 months)</li>
+                            <li><strong>Grave Conditions:</strong> Up to 30 calendar days</li>
+                            <li><strong>Terminal Illness:</strong> Up to 5 business days</li>
+                        </ul>
+                        <p><strong>Important:</strong> The date Service Canada receives your application could affect when your benefit starts. Apply as soon as you develop a severe and prolonged disability that prevents you from working.</p>
+
+                        <h4>Apply Online</h4>
+                        <p>To apply online, sign in to: <a href="https://www.canada.ca/en/employment-social-development/services/my-account.html" target="_blank">My Service Canada Account</a></p>
+                        <p>Or download paper forms at: <a href="https://www.canada.ca/en/services/benefits/publicpensions/cpp/cpp-disability-benefit/apply.html" target="_blank">CPP Disability Benefits | Apply</a></p>
+
+                        <h4>Further Assistance</h4>
+                        <p>Service Canada CPP Call Center:</p>
+                        <ul>
+                            <li><strong>Phone:</strong> 1-800-277-9914</li>
+                            <li><strong>TTY:</strong> 1-800-255-4786</li>
+                            <li><strong>Outside Canada/US:</strong> 1-613-957-1954 (collect calls accepted)</li>
+                        </ul>
+                        <p>You can also visit any Service Canada office for in-person assistance.</p>
                     </div>
 
                 </div>
@@ -508,7 +971,7 @@
         <!-- 1.6 Registered Disability Savings Plan -->
         <div class="benefit-item">
             <div class="benefit-trigger" onclick="toggleBenefit('rdsp-content', this)">
-                <span class="benefit-arrow">▶</span><span class="benefit-number">1.6</span>&nbsp;<span class="benefit-title">Registered Disability Savings Plan (RDSP)</span>
+                <span class="benefit-arrow">▶</span><span class="benefit-number">3.3.6</span>&nbsp;<span class="benefit-title">Registered Disability Savings Plan (RDSP)</span>
             </div>
             <div class="benefit-content" id="rdsp-content">
                 <div class="benefit-content-inner">
@@ -556,9 +1019,67 @@
 
                     <div class="more-info-row">
                         <label>
-                            <input type="checkbox" id="checkbox-rdsp" onchange="toggleNextStep('next-step-rdsp', this.checked)">
+                            <input type="checkbox" id="checkbox-rdsp" onchange="toggleApplySection('rdsp-apply-section', this.checked)">
                             Provide more information
                         </label>
+                    </div>
+
+                    <div class="apply-section" id="rdsp-apply-section">
+                        <hr class="content-divider">
+
+                        <h4>Prerequisites</h4>
+                        <p>Before opening an RDSP, you must:</p>
+                        <ul>
+                            <li>Be approved for the Disability Tax Credit (DTC)</li>
+                            <li>Have a Social Insurance Number (SIN)</li>
+                            <li>Be under age 60 when the plan is opened</li>
+                            <li>Be a Canadian resident</li>
+                        </ul>
+
+                        <h4>How to Open an RDSP</h4>
+                        <p><strong>Step 1: Choose a Financial Institution</strong></p>
+                        <p>Contact a participating bank, credit union, or investment firm that offers RDSPs. Compare fees, investment options, and withdrawal rules.</p>
+                        <p><strong>Step 2: Open the Account</strong></p>
+                        <p>Visit your chosen institution with:</p>
+                        <ul>
+                            <li>Social Insurance Number (SIN)</li>
+                            <li>Valid photo ID</li>
+                            <li>Proof of DTC approval</li>
+                            <li>Proof of legal authority (if applying on behalf of someone else)</li>
+                        </ul>
+                        <p><strong>Who Can Open an RDSP:</strong></p>
+                        <ul>
+                            <li>The beneficiary (if of legal age and has capacity)</li>
+                            <li>Legal parent (for child under age of majority)</li>
+                            <li>Legal guardian or representative</li>
+                            <li>Qualifying family member (in some cases)</li>
+                        </ul>
+                        <p><strong>Step 3: Apply for Grants and Bonds</strong></p>
+                        <p>When opening the RDSP, apply for government grants and bonds through your financial institution.</p>
+
+                        <h4>Important Notes</h4>
+                        <ul>
+                            <li><strong>Lifetime Contribution Limit:</strong> $200,000 (no annual limit)</li>
+                            <li><strong>Contributions Allowed Until:</strong> December 31 of the year you turn 59</li>
+                            <li><strong>Tax Filing Required:</strong> Must file tax returns for past two years and all future years to receive grants and bonds</li>
+                            <li><strong>Carry-Forward Available:</strong> Can apply for up to 10 years of retroactive grants and bonds</li>
+                        </ul>
+
+                        <h4>Find a Financial Institution</h4>
+                        <p>For a list of participating institutions, visit: <a href="https://www.canada.ca/en/employment-social-development/programs/disability/savings/apply.html#_Open_a_plan" target="_blank">canada.ca/rdsp</a></p>
+
+                        <h4>Further Assistance</h4>
+                        <p>Employment and Social Development Canada (ESDC) | Canada Disability Savings Grant &amp; Bond:</p>
+                        <ul>
+                            <li><strong>Phone:</strong> 1-866-204-0357</li>
+                            <li><strong>Email:</strong> rdsp-reei@hrsdc-rhdcc.gc.ca</li>
+                        </ul>
+                        <p>This number is specifically for questions about the Canada Disability Savings Grant (CDSG) and Canada Disability Savings Bond (CDSB).</p>
+                        <p>General RDSP Inquiries:</p>
+                        <ul>
+                            <li><strong>Phone:</strong> 1-800-622-6232 (1-800-O-CANADA)</li>
+                            <li><strong>TTY:</strong> 1-800-926-9105</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -693,27 +1214,29 @@
         
                     <span class="benefit-title">Application Process</span>
         
-                    <h4>Option A: Determine Your Benefit Amount</h4>
-                    <p><span style="font-weight: 600">This option is ideal if you are confident you would like to participate in this
-                        program.</span> </p>
-                        <p>The Benefit Amount is the amount of funds that are <span style="font-weight: 600">paid tax-free directly to your loved ones</span> in the event of
-                        your passing.</p>
-                    <p>If you outlive the term of the program, the Benefit Amount is <span style="font-weight: 600">paid directly to you</span> and you may use the
-                        funds however you wish.</p>
-                    <p>Select this option if you feel that you confidently understand the program. You will be redirected to a
-                        quick online questionnaire (less than 2 minutes to complete) that will help to determine the Benefit
-                        Amount you qualify for.</p>
-                    <p>After you have reviewed the information, you will register for a session with a Benefits Specialist (via
-                        Zoom) to answer any questions you may have and assist you with the enrolment process.</p>
-        
-                    <h4>Option B: Learn More About The Program (recommended)</h4>
-                    <p><span style="font-weight: 600">If you are unsure about the program and would like to learn more, select this option.</span> Choosing this
-                        option will provide you with more detailed information, including an explanatory video, to help develop
-                        your understanding of the program.</p>
-                    <p>After you have reviewed the information, you may register for a session with a Benefits Specialist (via
-                        Zoom) to answer any questions you may have and assist you with the enrolment process.</p>
-                    <p><strong>Note:</strong> When meeting with your Benefits Specialist via Zoom, they will also review other
-                        benefits programs with you, if it is deemed you are eligible to participate.</p>
+                    <h4>Option A — Determine Your Benefit Amount</h4>
+                    <p style="font-weight: 500;">Best for individuals who feel ready to move forward.</p>
+                    <ul>
+                        <li>Begin the process to determine the tax-free Benefit Amount your loved ones may receive</li>
+                        <li>If you outlive the program term, the full Benefit Amount is paid directly to you</li>
+                        <li>Complete a short 2-minute questionnaire to start your eligibility review</li>
+                        <li>Review your results together with a Benefits Specialist (Zoom) to ensure you fully understand the program and
+                            can ask questions</li>
+                        <li>Receive step-by-step guidance and support with the enrolment process</li>
+                        <li>Your specialist will also review other benefit programs you may qualify for</li>
+                    </ul>
+                    
+                    <h4>Option B — Learn More About the Program (Recommended)</h4>
+                    <p style="font-weight: 500;">Best for individuals who would like a clear understanding before starting the
+                        questionnaire.</p>
+                    <ul>
+                        <li>Receive a clear, detailed explanation of how the program works</li>
+                        <li>Watch a short educational video that explains the program in simple terms</li>
+                        <li>Meet with a Benefits Specialist (Zoom) before completing the questionnaire to ask questions and walk through the
+                            program together</li>
+                        <li>Move forward only when you feel fully informed and comfortable</li>
+                        <li>Your specialist will also review other benefit programs you may qualify for</li>
+                    </ul>
         <div class="more-info-row">
             <p style="margin-bottom: 10px;">Please select your preferred option:</p>
             <label>
@@ -943,6 +1466,66 @@
         }
     }
 
+    function toggleApplySection(sectionId, isChecked) {
+        const section = document.getElementById(sectionId);
+
+        if (isChecked) {
+            const extraHeight = section.scrollHeight;
+            section.style.maxHeight = extraHeight + 'px';
+            // Expand parent benefit-content to fit
+            const benefitContent = section.closest('.benefit-content');
+            if (benefitContent && benefitContent.classList.contains('open')) {
+                benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) + extraHeight) + 'px';
+            }
+        } else {
+            const removedHeight = parseInt(section.style.maxHeight) || 0;
+            // Shrink parent benefit-content first
+            const benefitContent = section.closest('.benefit-content');
+            if (benefitContent && benefitContent.classList.contains('open')) {
+                benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) - removedHeight) + 'px';
+            }
+            section.style.maxHeight = '0';
+            // Reset all nested checkboxes and hide methods
+            section.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            const methods = section.querySelector('.apply-methods');
+            if (methods) methods.style.maxHeight = '0';
+        }
+    }
+
+    function checkAllEligibility(className, methodsId) {
+        const checkboxes = document.querySelectorAll('.' + className);
+        const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+        const methods = document.getElementById(methodsId);
+
+        if (allChecked) {
+            const extraHeight = methods.scrollHeight;
+            methods.style.maxHeight = extraHeight + 'px';
+            // Update parent apply-section
+            const applySection = methods.closest('.apply-section');
+            if (applySection && parseInt(applySection.style.maxHeight) > 0) {
+                applySection.style.maxHeight = (parseInt(applySection.style.maxHeight) + extraHeight) + 'px';
+            }
+            // Update parent benefit-content
+            const benefitContent = methods.closest('.benefit-content');
+            if (benefitContent && benefitContent.classList.contains('open')) {
+                benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) + extraHeight) + 'px';
+            }
+        } else {
+            const removedHeight = parseInt(methods.style.maxHeight) || 0;
+            methods.style.maxHeight = '0';
+            // Shrink parent apply-section
+            const applySection = methods.closest('.apply-section');
+            if (applySection && parseInt(applySection.style.maxHeight) > 0) {
+                applySection.style.maxHeight = (parseInt(applySection.style.maxHeight) - removedHeight) + 'px';
+            }
+            // Shrink parent benefit-content
+            const benefitContent = methods.closest('.benefit-content');
+            if (benefitContent && benefitContent.classList.contains('open')) {
+                benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) - removedHeight) + 'px';
+            }
+        }
+    }
+
     function toggleNextStep(stepId, isChecked) {
         const step = document.getElementById(stepId);
         if (isChecked) {
@@ -963,6 +1546,9 @@
         }
     }
 </script>
+
+
+<div class="section footer rebuild profile"><div class="footer-container w-container"><div class="footer-div"><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png" width="45" height="45" alt="" class="image-2 logo-footer"></div></div><div class="footer-container w-container"><div class="footer-row w-row"><div class="footer-left column-footer footer-col footer-left-col w-col"><p class="paragraph-12 footer-left paragraph-footer"><a href="/" aria-current="page" class="link-3 w--current">Eligibility</a><a href="/cdsb-eligibility" class="link-5">Disability Bond</a><a href="https://www.rdspcanada.ca/disability-benefits-assessment-tool" target="_blank" class="link-6">Assessment Tool</a><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit/about-dtc.html" target="_blank" class="link-7">Disability Tax&nbsp;Credit (DTC)</a><a href="https://www.canada.ca/en/revenue-agency.html" target="_blank" class="link-8">Canada Revenue Agency (CRA)</a><a href="/faq" class="link-9">Frequently-asked Questions</a></p></div><div class="footer-col footer-right-col w-col"><p class="paragraph-11 footer-right"><a href="/terms-of-use" target="_blank" class="link-11">Terms of Use</a><a href="/privacy-policy" target="_blank" class="link-12">Privacy</a><a href="/contact" target="_blank" class="link-13">Contact</a></p></div></div></div><div class="footer-full-divider"></div><div class="footer-bottom footer-container w-container"><div class="div-block-3"><a href="https://webflow.com/" target="_blank" class="webflow-link w-inline-block"><div class="paragraph-tiny footer-tiny">© RDSP&nbsp;Canada ~ 2026</div></a></div></div></div>
 
 </body>
 </html>
