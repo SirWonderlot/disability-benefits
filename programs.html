@@ -283,7 +283,11 @@
         }
 
         @media screen and (max-width: 991px) {
-            .navigation.programs { padding: 12px 20px; }
+            .navigation.programs { padding: 12px 20px 16px; }
+
+            .navigation.programs.w-nav::after {
+                max-width: calc(100% - 40px);
+            }
 
             /* Push hamburger to far right */
             .navigation .menu { justify-content: flex-end; }
@@ -592,6 +596,11 @@
             color: #0264b4 !important;
             font-weight: 500 !important;
             font-size: 1em !important;
+            margin-bottom: 12px !important;
+        }
+
+        .dbp-widget .apply-methods .eligibility-checklist label strong {
+            margin-right: 5px !important;
         }
 
         .dbp-widget .apply-methods .eligibility-checklist input[type="checkbox"] {
