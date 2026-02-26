@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3.1 Disability Benefits Programs</title>
+    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Footer styles */
@@ -595,8 +596,6 @@
 
         .dbp-widget .apply-methods .eligibility-checklist input[type="checkbox"] {
             accent-color: #0264b4 !important;
-            width: 1em !important;
-            height: 1em !important;
             margin-top: 2px !important;
         }
 
@@ -604,10 +603,6 @@
             font-size: 1em !important;
         }
 
-        .dbp-widget .more-info-row input[type="checkbox"] {
-            width: 1em !important;
-            height: 1em !important;
-        }
 
         /* ── GAP Continue button ── */
         .gap-continue-section {
@@ -646,7 +641,7 @@
 </head>
 <body>
 
-<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation programs w-nav"><div class="navigation-wrap"><a href="/cdsb-eligibility" class="logo-link w-nav-brand"><div class="columns-5 w-row"><div class="column-6 w-col w-col-6 w-col-medium-6"></div><div class="column-5 w-col w-col-6 w-col-medium-6"></div></div></a><div class="menu"><nav role="navigation" class="navigation-items w-nav-menu"><a href="/disability-benefits-assessment-tool" class="navigation-item w-nav-link">Eligibility</a><a href="/dtc-eligibility-2024" target="_blank" class="navigation-item faq w-nav-link">FAQ</a><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png" loading="lazy" width="50" alt="" class="image-4"><a href="/privacy-policy" class="navigation-item w-nav-link">Privacy</a><a href="/contact" class="navigation-item contact w-nav-link">Contact</a></nav><div class="menu-button w-nav-button" aria-label="menu" role="button" tabindex="0" aria-expanded="false"><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5f66ba195f18246d973acac7_menu-mobile.png" height="30" alt="" class="menu-icon menu-flag"></div></div></div></div>
+<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation programs w-nav"><div class="navigation-wrap"><a href="/cdsb-eligibility" class="logo-link w-nav-brand"><div class="columns-5 w-row"><div class="column-6 w-col w-col-6 w-col-medium-6"></div><div class="column-5 w-col w-col-6 w-col-medium-6"></div></div></a><div class="menu"><nav role="navigation" class="navigation-items w-nav-menu"><a href="https://www.rdspcanada.ca/cdsb-eligibility" class="navigation-item w-nav-link">Disability Bond</a><a href="https://benefits.rdspcanada.ca/programs.html" class="navigation-item w-nav-link">Benefits Programs</a><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png" loading="lazy" width="50" alt="" class="image-4"><a href="https://www.rdspcanada.ca/programs/additional-programs" class="navigation-item w-nav-link">Additional Programs</a><a href="https://resources.rdspcanada.ca/" class="navigation-item w-nav-link">Resources</a></nav><div class="menu-button w-nav-button" aria-label="menu" role="button" tabindex="0" aria-expanded="false"><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5f66ba195f18246d973acac7_menu-mobile.png" height="30" alt="" class="menu-icon menu-flag"></div></div></div></div>
 
 <div class="dbp-widget">
 
@@ -884,8 +879,12 @@
 
                             <hr class="content-divider">
                             <div class="eligibility-checklist">
-                                <label><input type="checkbox"> Apply with assistance</label>
-                                <label><input type="checkbox"> Apply without assistance</label>
+                                <label><input type="checkbox" data-group="dtc-main" value="with" onchange="handleDTCApplyCheckbox(this, 'dtc-continue-main')"> Apply with assistance</label>
+                                <label><input type="checkbox" data-group="dtc-main" value="without" onchange="handleDTCApplyCheckbox(this, 'dtc-continue-main')"> Apply without assistance</label>
+                            </div>
+                            <div id="dtc-continue-main" class="gap-continue-section">
+                                <hr class="content-divider">
+                                <a href="#" target="_blank" class="gap-continue-btn">Continue</a>
                             </div>
                         </div>
                     </div>
@@ -956,7 +955,7 @@
                                 <li>Your specialist will also review other benefit programs you may qualify for</li>
                             </ul>
 
-                            <h4>Option B — Learn More About the Program (Recommended)</h4>
+                            <h4>Option B — Learn More About the Program</h4>
                             <p style="font-weight: 500;">Best for individuals who would like a clear understanding before starting the questionnaire.</p>
                             <ul>
                                 <li>Receive a clear, detailed explanation of how the program works</li>
@@ -1823,6 +1822,52 @@
         }
     }
 
+    function handleDTCApplyCheckbox(checkbox, continueId) {
+        const group = checkbox.dataset.group;
+        // Uncheck the other option in this group
+        document.querySelectorAll('input[data-group="' + group + '"]').forEach(function(cb) {
+            if (cb !== checkbox) cb.checked = false;
+        });
+
+        const continueSection = document.getElementById(continueId);
+        const continueBtn = continueSection.querySelector('a.gap-continue-btn');
+
+        if (checkbox.checked) {
+            // Set destination link
+            continueBtn.href = checkbox.value === 'with'
+                ? 'https://www.rdspcanada.ca/specialists/dtc-apply-with-assistance'
+                : 'https://www.canada.ca/en/revenue-agency/services/forms-publications/forms/t2201.html';
+
+            if (continueSection.style.display !== 'block') {
+                continueSection.style.display = 'block';
+                var added = continueSection.scrollHeight;
+                var applyMethods = continueSection.closest('.apply-methods');
+                if (applyMethods && parseInt(applyMethods.style.maxHeight) > 0)
+                    applyMethods.style.maxHeight = (parseInt(applyMethods.style.maxHeight) + added) + 'px';
+                var applySection = continueSection.closest('.apply-section');
+                if (applySection && parseInt(applySection.style.maxHeight) > 0)
+                    applySection.style.maxHeight = (parseInt(applySection.style.maxHeight) + added) + 'px';
+                var benefitContent = continueSection.closest('.benefit-content');
+                if (benefitContent && benefitContent.classList.contains('open'))
+                    benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) + added) + 'px';
+            }
+        } else {
+            if (continueSection.style.display === 'block') {
+                var removed = continueSection.scrollHeight;
+                continueSection.style.display = 'none';
+                var applyMethods = continueSection.closest('.apply-methods');
+                if (applyMethods && parseInt(applyMethods.style.maxHeight) > 0)
+                    applyMethods.style.maxHeight = (parseInt(applyMethods.style.maxHeight) - removed) + 'px';
+                var applySection = continueSection.closest('.apply-section');
+                if (applySection && parseInt(applySection.style.maxHeight) > 0)
+                    applySection.style.maxHeight = (parseInt(applySection.style.maxHeight) - removed) + 'px';
+                var benefitContent = continueSection.closest('.benefit-content');
+                if (benefitContent && benefitContent.classList.contains('open'))
+                    benefitContent.style.maxHeight = (parseInt(benefitContent.style.maxHeight) - removed) + 'px';
+            }
+        }
+    }
+
     // Mobile nav toggle
     (function() {
         const menuBtn = document.querySelector('.menu-button.w-nav-button');
@@ -1844,7 +1889,7 @@
 </script>
 
 
-<div class="section footer rebuild profile"><div class="footer-container w-container"><div class="footer-div"><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png" width="45" height="45" alt="" class="image-2 logo-footer"></div></div><div class="footer-container w-container"><div class="footer-row w-row"><div class="footer-left column-footer footer-col footer-left-col w-col"><p class="paragraph-12 footer-left paragraph-footer"><a href="/" aria-current="page" class="link-3 w--current">Eligibility</a><a href="/cdsb-eligibility" class="link-5">Disability Bond</a><a href="https://www.rdspcanada.ca/disability-benefits-assessment-tool" target="_blank" class="link-6">Assessment Tool</a><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit/about-dtc.html" target="_blank" class="link-7">Disability Tax&nbsp;Credit (DTC)</a><a href="https://www.canada.ca/en/revenue-agency.html" target="_blank" class="link-8">Canada Revenue Agency (CRA)</a><a href="/faq" class="link-9">Frequently-asked Questions</a></p></div><div class="footer-col footer-right-col w-col"><p class="paragraph-11 footer-right"><a href="/terms-of-use" target="_blank" class="link-11">Terms of Use</a><a href="/privacy-policy" target="_blank" class="link-12">Privacy</a><a href="/contact" target="_blank" class="link-13">Contact</a></p></div></div></div><div class="footer-full-divider"></div><div class="footer-bottom footer-container w-container"><div class="div-block-3"><a href="https://webflow.com/" target="_blank" class="webflow-link w-inline-block"><div class="paragraph-tiny footer-tiny">© RDSP&nbsp;Canada ~ 2026</div></a></div></div></div>
+<div class="section footer rebuild profile"><div class="footer-container w-container"><div class="footer-div"><img src="https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/5e7d62bc968f476be6fd7ce2_flag-canada-circle-big.png" width="45" height="45" alt="" class="image-2 logo-footer"></div></div><div class="footer-container w-container"><div class="footer-row w-row"><div class="footer-left column-footer footer-col footer-left-col w-col"><p class="paragraph-12 footer-left paragraph-footer"><a href="https://benefits.rdspcanada.ca/programs.html" class="link-3 w--current">Benefits Programs</a><a href="/cdsb-eligibility" class="link-5">Disability Bond</a><a href="https://resources.rdspcanada.ca/" target="_blank" class="link-6">Resources</a><a href="https://www.rdspcanada.ca/programs/additional-programs" target="_blank" class="link-7">Additional Programs</a><a href="https://www.canada.ca/en/revenue-agency.html" target="_blank" class="link-8">Canada Revenue Agency (CRA)</a><a href="https://www.canada.ca/en/services/benefits/finder.html" target="_blank" class="link-9">Benefits Finder</a></p></div><div class="footer-col footer-right-col w-col"><p class="paragraph-11 footer-right"><a href="/terms-of-use" target="_blank" class="link-11">Terms of Use</a><a href="/privacy-policy" target="_blank" class="link-12">Privacy</a><a href="/contact" target="_blank" class="link-13">Contact</a></p></div></div></div><div class="footer-bottom footer-container w-container"><div class="div-block-3"><a href="https://webflow.com/" target="_blank" class="webflow-link w-inline-block"><div class="paragraph-tiny footer-tiny">© RDSP&nbsp;Canada ~ 2026</div></a></div></div></div>
 
 </body>
 </html>
