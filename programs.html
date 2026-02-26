@@ -186,7 +186,7 @@
             z-index: 1;
             text-decoration: none;
             color: #1a1b1f;
-            display: inline-block;
+            display: none;
             position: relative;
             flex-shrink: 0;
         }
@@ -285,6 +285,8 @@
         @media screen and (max-width: 991px) {
             .navigation.programs { padding: 20px 20px 28px; }
             .navigation.programs.w-nav::after { display: block; left: 20px; right: 20px; width: auto; transform: none; }
+
+            .logo-link.w-nav-brand { display: inline-block; }
 
             /* Push hamburger to far right */
             .navigation .menu { justify-content: flex-end; }
