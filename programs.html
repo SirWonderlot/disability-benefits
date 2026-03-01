@@ -716,7 +716,7 @@
             width: 260px;
             max-width: 100%;
             aspect-ratio: 16 / 9;
-            background: #0d2237 url('https://vumbnail.com/1169202696.jpg') center / cover no-repeat;
+            background: #0d2237 center / cover no-repeat;
             border-radius: 8px;
             cursor: pointer;
             overflow: hidden;
@@ -2217,6 +2217,19 @@
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeGapVideoModal();
         });
+
+        // Fetch the real Vimeo thumbnail via the official oEmbed API
+        fetch('https://vimeo.com/api/oembed.json?url=https%3A%2F%2Fvimeo.com%2F1169202696')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data && data.thumbnail_url) {
+                    var preview = document.querySelector('.gap-video-preview');
+                    if (preview) {
+                        preview.style.backgroundImage = "url('" + data.thumbnail_url + "')";
+                    }
+                }
+            })
+            .catch(function () { /* silently fall back to dark background */ });
 
         function toggleBenefit(contentId, trigger) {
             const content = document.getElementById(contentId);
