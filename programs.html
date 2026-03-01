@@ -716,7 +716,7 @@
             width: 260px;
             max-width: 100%;
             aspect-ratio: 16 / 9;
-            background: #0d2237 center / cover no-repeat;
+            background: #0d2237 url('https://cdn.prod.website-files.com/5e7d62bc968f474458fd7c90/69a397fddb08dc34494929d4_GAP.jpg') center / cover no-repeat;
             border-radius: 8px;
             cursor: pointer;
             overflow: hidden;
@@ -1264,7 +1264,7 @@
                         <p>There are no medical exclusions.</p>
 
                         <h4>Explanatory Video</h4>
-                        <p>Brief description placeholder — a short overview of how the Guaranteed Access Program works.</p>
+                        <p>Watch this quick video to learn how this program works and the benefits it provides.</p>
                         <div class="gap-video-preview"
                             onclick="openGapVideoModal()"
                             role="button"
@@ -2217,19 +2217,6 @@
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeGapVideoModal();
         });
-
-        // Fetch the real Vimeo thumbnail via the official oEmbed API
-        fetch('https://vimeo.com/api/oembed.json?url=https%3A%2F%2Fvimeo.com%2F1169202696')
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                if (data && data.thumbnail_url) {
-                    var preview = document.querySelector('.gap-video-preview');
-                    if (preview) {
-                        preview.style.backgroundImage = "url('" + data.thumbnail_url + "')";
-                    }
-                }
-            })
-            .catch(function () { /* silently fall back to dark background */ });
 
         function toggleBenefit(contentId, trigger) {
             const content = document.getElementById(contentId);
